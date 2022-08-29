@@ -2,46 +2,34 @@
    Complete the below for code reviewers' convenience:
 
    Code repository: _put repo URL here_
-   Web app: _put project's github pages URL here_
+   Web app: _put project's GitHub pages URL here_
    */
 
 // ======== OBJECTS DEFINITIONS ========
 // Define your objects here
-const dog = {
-    species: 'dog',
-    name: 'Tom',
-    gender: 'male',
-    greeting: 'Howl!',
-    legs: 4,
-    hands: 0,
-};
+class Inhabitant {
+    constructor(species, name, gender, greeting, legs) {
+        this.species = species;
+        this.name = name;
+        this.gender = gender;
+        this.greeting = greeting;
+        this.legs = legs;
+    }
+}
 
-const cat = {
-    species: 'cat',
-    name: 'Kitty',
-    gender: 'female',
-    greeting: 'Meow!',
-    legs: 4,
-    hands: 0,
-};
+class Human extends Inhabitant {
+    constructor(name, gender, greeting, legs, hands) {
+        super(name, gender, greeting, legs);
+        this.species = 'human';
 
-const woman = {
-    species: 'human',
-    name: 'Jessy',
-    gender: 'female',
-    greeting: 'Hello!',
-    legs: 2,
-    hands: 2,
-};
+        this.hands = hands;
+    }
+}
 
-const man = {
-    species: 'human',
-    name: 'Ted',
-    gender: 'male',
-    greeting: 'Hello my dear!',
-    legs: 2,
-    hands: 2,
-};
+const dog = new Inhabitant('dog', 'Tom', 'male', 'Howl!', 4);
+const cat = new Inhabitant('cat', 'Kitty', 'female', 'Meow!', 4);
+const woman = new Human('Jessy', 'female', 'Hello!', 2, 2);
+const man = new Human('Ted', 'male', 'Hello my dear!', 2, 2);
 
 const arrayOfInhabitants = [dog, cat, woman, man];
 
