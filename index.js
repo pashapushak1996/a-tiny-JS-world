@@ -38,13 +38,18 @@ const arrayOfKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands'];
 const pullValuesOfObj = (obj) => {
     const array = [];
 
-    arrayOfKeys.forEach((key) => array.push(obj[key]));
+    arrayOfKeys.forEach((key) => {
+        obj[key] && array.push(obj[key])
+    });
 
     return array;
 };
 
+
 arrayOfInhabitants.forEach((inhabitant,) => {
     const arrayOfValues = pullValuesOfObj(inhabitant);
+
+    console.log(arrayOfValues);
 
     const stringToPrint = arrayOfValues.join('; ') + ' ;';
 
