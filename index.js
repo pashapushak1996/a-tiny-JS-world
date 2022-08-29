@@ -49,8 +49,6 @@ const pullValuesOfObj = (obj) => {
 arrayOfInhabitants.forEach((inhabitant,) => {
     const arrayOfValues = pullValuesOfObj(inhabitant);
 
-    console.log(arrayOfValues);
-
     const stringToPrint = arrayOfValues.join('; ') + ' ;';
 
     print(stringToPrint);
