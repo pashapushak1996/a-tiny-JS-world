@@ -4,10 +4,11 @@ class Inhabitant {
         this.name = name;
         this.gender = gender;
         this.greeting = greeting;
+        this.inhabitantProps = ['species', 'name', 'gender', 'greeting'];
     }
 
-    valuesToString(inhabitantProps) {
-        return inhabitantProps
+    valuesToString() {
+        return this.inhabitantProps
             .filter((prop) => this[prop])
             .map((prop) => this[prop])
             .join('; ') + ';';
@@ -20,12 +21,22 @@ class Human extends Inhabitant {
         this.legs = 2;
         this.hands = 2;
     }
+
+    valuesToString() {
+        this.inhabitantProps.push('legs', 'hands');
+        return super.valuesToString();
+    }
 }
 
 class Animal extends Inhabitant {
     constructor(name, gender, greeting) {
         super(name, gender, greeting);
         this.paws = 4;
+    }
+
+    valuesToString() {
+        this.inhabitantProps.push('paws');
+        return super.valuesToString();
     }
 }
 
@@ -48,11 +59,9 @@ const man = new Human('Ted', 'male', 'Hello my dear!');
 
 const arrayOfInhabitants = [dog, cat, woman, man];
 
-const inhabitantProps = ['species', 'name', 'gender', 'greeting', 'legs', 'hands', 'paws'];
-
-
 arrayOfInhabitants.forEach((inhabitant,) => {
-    const stringToPrint = inhabitant.valuesToString(inhabitantProps);
+    const stringToPrint = inhabitant.valuesToString();
+    console.log(stringToPrint);
 
     print(stringToPrint);
 });
