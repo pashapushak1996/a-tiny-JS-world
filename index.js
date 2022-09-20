@@ -5,6 +5,13 @@ class Inhabitant {
         this.gender = gender;
         this.greeting = greeting;
     }
+
+    valuesToString(inhabitantProps) {
+        return inhabitantProps
+            .filter((prop) => this[prop])
+            .map((prop) => this[prop])
+            .join('; ') + ';';
+    }
 }
 
 class Human extends Inhabitant {
@@ -41,23 +48,11 @@ const man = new Human('Ted', 'male', 'Hello my dear!');
 
 const arrayOfInhabitants = [dog, cat, woman, man];
 
-const arrayOfKeys = ['species', 'name', 'gender', 'greeting', 'legs', 'hands', 'paws'];
+const inhabitantProps = ['species', 'name', 'gender', 'greeting', 'legs', 'hands', 'paws'];
 
-const pullValuesOfObj = (obj) => {
-    const array = [];
-
-    arrayOfKeys.forEach((key) => {
-        obj[key] && array.push(obj[key]);
-    });
-
-
-    return array;
-};
 
 arrayOfInhabitants.forEach((inhabitant,) => {
-    const arrayOfValues = pullValuesOfObj(inhabitant);
-
-    const stringToPrint = arrayOfValues.join('; ') + ' ;';
+    const stringToPrint = inhabitant.valuesToString(inhabitantProps);
 
     print(stringToPrint);
 });
